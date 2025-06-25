@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage | Premium Travel Experiences</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+             --blue: #007bff;
+            --indigo: #6610f2;
+            --purple: #6f42c1;
+            --pink: #e83e8c;
+            --red: #dc3545;
+            --orange: #fd7e14;
+            --yellow: #ffc107;
+            --green: #28a745;
+            --teal: #20c997;
+            --cyan: #17a2b8;
+            --white: #fff;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            /* font-family: "Roboto", sans-serif; */
+            font-weight: normal;
+            font-style: normal;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #212529;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(249, 250, 253, 0.463);
+            backdrop-filter: blur(4px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+       
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .slider-area {
+            position: relative;
+            margin-top: -1px;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .hero__caption {
+            padding-top: 105px;
+            text-align: center;
+        }
+        
+        .hero__caption h1 {
+            color: #00095E;
+            line-height: 1.2;
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: "Josefin Sans", sans-serif;
+        }
+        
+        .hero__caption h1 dd {
+            position: relative;
+            display: inline-block;
+            margin: 0;
+        }
+        
+        .hero__caption h1 dd::before {
+            position: absolute;
+            content: "";
+            height: 11px;
+            background: #FFC800;
+            width: 97%;
+            display: inline-block;
+            top: 58%;
+            z-index: -1;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+        }
+        
+        .hero__caption p {
+            font-size: 20px;
+            color: #00095E;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .btn.slider-btn {
+            padding: 20px 40px;
+            background: linear-gradient(to bottom, #00095e 0%, #0c0c1f 100%);
+            color: white !important;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 5px;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn.slider-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider-bg1 {
+            background-image: url('./pro-3-img/travel-2.webp');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            height: 600px;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .car-img {
+            width: 100%;
+            position: relative;
+        }
+        
+        .car {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            width: 600px;
+            animation: nudge 1s linear infinite alternate;
+        }
+        
+        .car img {
+            width: 100%;
+            height: auto;
+        }
+        
+        @keyframes nudge {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero__caption h1 {
+                font-size: 40px;
+            }
+            
+            .hero__caption p {
+                font-size: 16px;
+            }
+            
+            .slider-bg1 {
+                height: 500px;
+            }
+            
+            .car {
+                width: 300px;
+                right: 5%;
+            }
+        }
+        
+        /* Destinations */
+        .untree_co-section {
+      padding: 70px 0;
+    }
+    .media-thumb {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+    .media-thumb .media-text {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      z-index: 2;
+    }
+    .media-thumb .media-text h3 {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #1A374D;
+      margin: 0;
+    }
+    .media-thumb .media-text .location {
+      font-size: .8rem;
+      color: rgba(26, 55, 77, 0.5);
+    }
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+    }
+    .section-imgbg{
+        background-image: url('./image-bootstrap/about_bg.jpg');
+    }
+        /* Tours */
+        .img-hover-zoom {
+  transition: transform 0.5s ease;
+}
+.img-hover-zoom:hover {
+  transform: scale(1.05);
+}
+.tour-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tour-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 1.25rem 1.75rem rgba(0, 0, 0, 0.15);
+}
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 15px;
+        }
+        
+        /* Booking Form */
+       .card {
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.form-control, .form-select {
+  border-radius: 0.75rem;
+  transition: 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+  border-color: #0d6efd;
+}
+
+.btn-primary {
+  border-radius: 0.75rem;
+}
+
+        
+        /* Footer */
+        footer {
+            background-image: url('./pro-3-img/travel-1.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+        .text-p{
+            background-image: linear-gradient(to right, #ff2f8b, #9035f9);
+            color: transparent;
+            display: inline-block;
+            font-weight: 400;
+            text-transform: uppercase;
+            background-clip: text;
+            margin: 0px;
+            letter-spacing: 1px;
+        }
+        h1{
+            font-family: "Playfair Display", serif;
+            font-size: 48px;
+        }
+        h2{
+         font-family: "Playfair Display", serif;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-plane me-2"></i>VOYAGE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#destinations">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tours">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#booking" class="btn btn-success rounded-pill px-4">Book Now</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+   <section id="home">
+     <div class="slider-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-8 col-md-9 col-sm-12">
+                    <div class="hero__caption text-center">
+                        <h1>Lifelong memories just a <dd>few seconds away</dd></h1>
+                        <p>Let's start your journey with us, your dream will come true</p>
+                        <a href="#" class="btn slider-btn">Explore Destinations</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slider-bg1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="car-img">
+                            <div class="car">
+                                <img src="./pro-3-img/travel-3.webp" alt="Travel car">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   </section>
+
+    <!-- Destinations Section -->
+    <section class="py-5" id="destinations">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="">Popular Destinations</h1>
+                <p class=" text-p">Explore our most loved travel spots around the world</p>
+                
+            </div>
+            
+            <div class="owl-carousel owl-theme">
+        <div class="item">
+          <a class="media-thumb" href="#">
+            <div class="media-text">
+              <h3>Rialto Bridge</h3>
+              <span class="location">Italy</span>
+            </div>
+            <img src="./pro-3-img/pro-3-1.jpg" alt="Rialto Bridge" class="img-fluid">
+          </a>
+        </div>
+        <div class="item">
+          <a class="media-thumb" href="#">
+            <div class="media-text">
+              <h3>San Francisco</h3>
+              <span class="location">United States</span>
+            </div>
+            <img src="./pro-3-img/pro-3-2.jpg" alt="San Francisco" class="img-fluid">
+          </a>
+        </div>
+        <div class="item">
+          <a class="media-thumb" href="#">
+            <div class="media-text">
+              <h3>Lake Thun</h3>
+              <span class="location">Switzerland</span>
+            </div>
+            <img src="./pro-3-img/pro-3-3.jpg" alt="Lake Thun" class="img-fluid">
+          </a>
+        </div>
+        <div class="item">
+          <a class="media-thumb" href="#">
+            <div class="media-text">
+              <h3>Pragser Wildsee</h3>
+              <span class="location">Italy</span>
+            </div>
+            <img src="./pro-3-img/pro-3-4.jpg" alt="Pragser Wildsee" class="img-fluid">
+          </a>
+        </div>
+        <div class="item">
+          <a class="media-thumb" href="#">
+            <div class="media-text">
+              <h3>Oia</h3>
+              <span class="location">Greece</span>
+            </div>
+            <img src="./pro-3-img/pro-3-5.jpg" alt="Oia" class="img-fluid">
+          </a>
+        </div>
+      </div>
+        </div>
+    </section>
+
+      <!-- Tours Section -->    
+<section class="py-5" id="tours">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="display-5">Featured Tours</h1>
+            <p class="text-p fs-5">Our best selling travel packages</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Tour Card Start -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card tour-card shadow-lg border-0 h-100 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="./pro-3-img/tour-1.avif" class="card-img-top img-hover-zoom" alt="European Tour">
+                        <span class="badge bg-primary position-absolute top-0 start-0 m-3 fs-6">$1,299</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">European Adventure</h5>
+                        <div class="d-flex align-items-center text-muted small mb-3">
+                            <i class="fas fa-calendar-alt text-primary me-2"></i> 10 days
+                            <i class="fas fa-map-marker-alt text-primary ms-3 me-2"></i> 5 countries
+                        </div>
+                        <p class="card-text">Experience the best of Europe with this comprehensive tour covering Paris, Rome, Barcelona, Amsterdam and Berlin.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#booking" class="btn btn-outline-primary w-100">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card tour-card shadow-lg border-0 h-100 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="./pro-3-img/tour-2.avif" class="card-img-top img-hover-zoom" alt="Asian Tour">
+                        <span class="badge bg-primary position-absolute top-0 start-0 m-3 fs-6">$1,599</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Asian Discovery</h5>
+                        <div class="d-flex align-items-center text-muted small mb-3">
+                            <i class="fas fa-calendar-alt text-primary me-2"></i> 14 days
+                            <i class="fas fa-map-marker-alt text-primary ms-3 me-2"></i> 4 countries
+                        </div>
+                        <p class="card-text">Immerse yourself in the rich cultures of Asia with visits to Tokyo, Bangkok, Bali and Singapore.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#booking" class="btn btn-outline-primary w-100">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card tour-card shadow-lg border-0 h-100 overflow-hidden">
+                    <div class="position-relative">
+                        <img src="./pro-3-img/tour-2-2.avif" class="card-img-top img-hover-zoom" alt="Caribbean Tour">
+                        <span class="badge bg-primary position-absolute top-0 start-0 m-3 fs-6">$899</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-semibold">Caribbean Paradise</h5>
+                        <div class="d-flex align-items-center text-muted small mb-3">
+                            <i class="fas fa-calendar-alt text-primary me-2"></i> 7 days
+                            <i class="fas fa-map-marker-alt text-primary ms-3 me-2"></i> 3 islands
+                        </div>
+                        <p class="card-text">Relax on pristine beaches and enjoy crystal-clear waters in this tropical island-hopping adventure.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <a href="#booking" class="btn btn-outline-primary w-100">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Tour Card End -->
+        </div>
+        
+    </div>
+    
+</section>
+
+    <!-- Gallery Section -->
+    <section class="py-5 section-imgbg" id="gallery">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="">Travel Gallery</h1>
+                <p class="text-p">Explore the world through our travelers' eyes</p>
+            </div>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="./pro-3-img/tour-9.webp" alt="Gallery Image 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./pro-3-img/tour-4.avif" alt="Gallery Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="./pro-3-img/tour-5.avif" alt="Gallery Image 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="./pro-3-img/tour-6.avif" alt="Gallery Image 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="./pro-3-img/t-1.webp" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="./pro-3-img/t-3.webp" alt="Gallery Image 6">
+                </div>
+                 <div class="gallery-item">
+                    <img src="./pro-3-img/t-2.webp" alt="Gallery Image 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="./pro-3-img/tour-3.avif" alt="Gallery Image 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light" id="testimonials" >
+        <div class="container">
+            <div class="text-center mb-5">
+                <h1 class="">Traveler Testimonials</h1>
+                <p class="text-p">Hear what our customers say about their experiences</p>
+            </div>
+            
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card text-center">
+                                    <img src="./pro-3-img/pro3-women.jpg" class="testimonial-img" alt="Sarah J.">
+                                    <h5>Sarah Johnson</h5>
+                                    <p class="text-muted">New York, USA</p>
+                                    <p class="mb-4">"The European tour exceeded all my expectations. The itinerary was perfect, and our guide was incredibly knowledgeable. Can't wait to book my next adventure!"</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card text-center">
+                                    <img src="./pro-3-img/pro3-man-1.jpg" class="testimonial-img" alt="Michael T.">
+                                    <h5>Michael Thompson</h5>
+                                    <p class="text-muted">London, UK</p>
+                                    <p class="mb-4">"The Asian Discovery tour was the trip of a lifetime. Everything was well-organized, and we got to experience authentic local culture. Highly recommend!"</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="testimonial-card text-center">
+                                    <img src="./pro-3-img/pro3-w-2.jpg" class="testimonial-img" alt="Emma L.">
+                                    <h5>Emma Lopez</h5>
+                                    <p class="text-muted">Sydney, Australia</p>
+                                    <p class="mb-4">"The Caribbean Paradise was exactly what we needed - beautiful beaches, excellent service, and unforgettable experiences. Will definitely travel with them again!"</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="py-5 bg-gradient-light" id="booking" style="background: linear-gradient(135deg, #f9fafb, #e3f2fd);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
+        <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white bg-opacity-75">
+          <div class="text-center mb-5">
+            <h2>Book Your Dream Vacation</h2>
+            <p class="text-p">Our travel experts will reach out to you within 24 hours.</p>
+          </div>
+          <form>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="fullName" placeholder="Full Name" required>
+                  <label for="fullName">Full Name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                  <label for="email">Email Address</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                  <label for="phone">Phone Number</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" id="tour" required>
+                    <option selected disabled value="">Choose a tour</option>
+                    <option value="europe">European Adventure</option>
+                    <option value="asia">Asian Discovery</option>
+                    <option value="caribbean">Caribbean Paradise</option>
+                    <option value="custom">America Tour</option>
+                    <option value="custom">Australia Tour</option>
+                    <option value="custom">Maldives</option>
+                    <option value="custom">Goa</option>
+                  </select>
+                  <label for="tour">Select Tour</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="date" class="form-control" id="date" placeholder="Travel Date" required>
+                  <label for="date">Preferred Travel Date</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="number" class="form-control" id="people" min="1" placeholder="Number of Travelers" required>
+                  <label for="people">Number of Travelers</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 120px"></textarea>
+                  <label for="message">Special Requests</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-lg w-100 shadow-sm mt-3">
+                  Submit Booking Request
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-4">VOYAGE</h5>
+                    <p>Making travel dreams come true since 2015. We specialize in creating unforgettable travel experiences around the globe.</p>
+                    <div class="mt-4 social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-4">Quick Links</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#destinations">Destinations</a></li>
+                        <li class="mb-2"><a href="#tours">Tours</a></li>
+                        <li class="mb-2"><a href="#gallery">Gallery</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-4">Contact Us</h6>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Travel St, New York, NY</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@voyage.com</li>
+                        <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-6PM</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h6 class="fw-bold mb-4">Newsletter</h6>
+                    <p>Subscribe to get travel tips and special offers</p>
+                    <form class="mt-3">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0"></p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3 text-decoration-none">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+     <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        responsive:{
+          0:{ items:1 },
+          600:{ items:2 },
+          1000:{ items:3 }
+        }
+      })
+    });
+  </script>
+    </body>
+</html>
