@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Play</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            color: white;
+            padding: 100px 0;
+        }
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+        .app-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #6e8efb;
+            transition: all 0.3s ease;
+        }
+        .feature-icon:hover {
+            transform: scale(1.2);
+            color: #a777e3;
+        }
+        .download-btn {
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: 600;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Custom animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Scroll animations */
+        [data-animate] {
+            opacity: 0;
+            transition: all 0.6s ease-out;
+        }
+        
+        [data-animate].animated {
+            opacity: 1;
+            transform: translateY(0) !important;
+        }
+        
+        .fade-in-up {
+            transform: translateY(30px);
+        }
+        
+        .fade-in-left {
+            transform: translateX(-30px);
+        }
+        
+        .fade-in-right {
+            transform: translateX(30px);
+        }
+        
+        /* Navbar animation */
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(255,255,255,0.95) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Button hover effects */
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hover-effect:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255,255,255,0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn-hover-effect:focus:after,
+        .btn-hover-effect:hover:after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold animate__animated animate__fadeInLeft" href="#">
+               <i class="fab fa-google-play me-2 fa-lg text-success"></i><span class="text-primary">Google Play</span>
+            </a>
+            <div>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.1s">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.2s">
+                        <a class="nav-link" href="#download">Download</a>
+                    </li>
+                    <li class="nav-item animate__animated animate__fadeInDown" style="animation-delay: 0.3s">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <h1 class="display-4 fw-bold mb-4">Your Life, Simplified</h1>
+                    <p class="lead mb-4">Google Play helps you organize your daily tasks, boost productivity, and achieve more with less effort. Join over 1 million satisfied users today.</p>
+                    <div class="d-flex flex-wrap">
+                        <a href="#download" class="btn btn-light btn-lg download-btn me-3 mb-2 btn-hover-effect">
+                            <i class="fab fa-apple me-2"></i>App Store
+                        </a>
+                        <a href="#download" class="btn btn-dark btn-lg download-btn mb-2 btn-hover-effect">
+                            <i class="fab fa-google-play me-2"></i>Google Play
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center animate__animated animate__fadeInRight">
+                    <img src="./pro-1-img/googleplay-1.webp" alt="App Preview" class="img-fluid rounded-3 shadow-lg mt-4 mt-md-0 floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold animate__animated animate__fadeIn">Amazing Features</h2>
+                <p class="lead text-muted animate__animated animate__fadeIn" style="animation-delay: 0.2s">Everything you need in one powerful app</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-animate="fade-in-up" style="animation-delay: 0.1s">
+                    <div class="card feature-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4>Lightning Fast</h4>
+                            <p class="text-muted">Optimized for speed so you can get things done in record time without any lag or delays.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-in-up" style="animation-delay: 0.2s">
+                    <div class="card feature-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h4>Secure & Private</h4>
+                            <p class="text-muted">End-to-end encryption keeps your data safe and private from prying eyes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-in-up" style="animation-delay: 0.3s">
+                    <div class="card feature-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h4>Cloud Sync</h4>
+                            <p class="text-muted">Access your data from any device with our seamless cloud synchronization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-in-up" style="animation-delay: 0.4s">
+                    <div class="card feature-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4>Smart Analytics</h4>
+                            <p class="text-muted">Get insights into your habits and productivity with our intelligent analytics dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-in-up" style="animation-delay: 0.5s">
+                    <div class="card feature-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>Customizable</h4>
+                            <p class="text-muted">Personalize the app to match your style with themes, layouts, and more.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-animate="fade-in-up" style="animation-delay: 0.6s">
+                    <div class="card feature-card p-4 h-100">
+                        <div class="text-center">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4>24/7 Support</h4>
+                            <p class="text-muted">Our dedicated support team is always ready to help you with any questions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center mb-4 mb-md-0 animate__animated animate__fadeInLeft">
+                    <img src="./pro-1-img/googleplay-1.webp" alt="App Screens" class="img-fluid rounded-3 shadow pulse">
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <h2 class="fw-bold mb-4">Download Now</h2>
+                    <p class="lead mb-4">Available on all major platforms. Start your free trial today - no credit card required.</p>
+                    
+                    <div class="d-flex flex-column flex-sm-row">
+                        <a href="#" class="btn btn-dark btn-lg download-btn mb-3 mb-sm-0 me-sm-3 btn-hover-effect">
+                            <div class="d-flex align-items-center">
+                                <i class="fab fa-google-play fa-2x me-2"></i>
+                                <div class="text-start">
+                                    <small class="d-block">Get it on</small>
+                                    <strong>Google Play</strong>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="#" class="btn btn-dark btn-lg download-btn btn-hover-effect">
+                            <div class="d-flex align-items-center">
+                                <i class="fab fa-apple fa-2x me-2"></i>
+                                <div class="text-start">
+                                    <small class="d-block">Download on the</small>
+                                    <strong>App Store</strong>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-2 animate__animated animate__fadeIn" style="animation-delay: 0.2s">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Free 30-day trial</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2 animate__animated animate__fadeIn" style="animation-delay: 0.3s">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>No credit card required</span>
+                        </div>
+                        <div class="d-flex align-items-center animate__animated animate__fadeIn" style="animation-delay: 0.4s">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Cancel anytime</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 text-white" style="background-color: #6e8efb;">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4 animate__animated animate__fadeInDown">Ready to Transform Your Productivity?</h2>
+            <p class="lead mb-5 animate__animated animate__fadeInDown" style="animation-delay: 0.2s">Join millions of users who are already achieving more every day.</p>
+            <a href="#download" class="btn btn-light btn-lg px-5 py-3 fw-bold animate__animated animate__pulse animate__infinite btn-hover-effect">Download Now - It's Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.1s">
+                    <h5 class="fw-bold mb-4">
+                        <i class="fab fa-google-play me-2"></i>Google Play
+                    </h5>
+                    <p>The ultimate productivity app designed to help you focus on what matters most.</p>
+                    <div class="mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.2s">
+                    <h5 class="fw-bold mb-4">Product</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Pricing</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Download</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.3s">
+                    <h5 class="fw-bold mb-4">Company</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.4s">
+                    <h5 class="fw-bold mb-4">Contact Us</h5>
+                    <p><i class="fas fa-envelope me-2"></i> support-in@google.com</p>
+                    <p><i class="fas fa-phone me-2"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Jim Pinter,<br>
+                    1600 Amphitheatre Parkway,<br>
+                    Mountain View, CA 94043. <br>
+                    USA</p>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+           
+                <div class="text-end animate__animated animate__fadeIn" style="animation-delay: 0.5s">
+                    <a href="#" class="text-white text-decoration-none small me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none small me-3">Terms of Service</a>
+                    <a href="#" class="text-white text-decoration-none small">Cookie Policy</a>
+                </div>
+          
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        
+        // Scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll animation trigger
+            const animateElements = document.querySelectorAll('[data-animate]');
+            
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('animated');
+                    }
+                });
+            }
+            
+            // Check on initial load
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+            
+            // Add ripple effect to buttons
+            const buttons = document.querySelectorAll('.btn-hover-effect');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const x = e.clientX - e.target.getBoundingClientRect().left;
+                    const y = e.clientY - e.target.getBoundingClientRect().top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.classList.add('ripple-effect');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
